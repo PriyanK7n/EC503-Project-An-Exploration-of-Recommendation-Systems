@@ -31,7 +31,7 @@ https://github.com/PriyanK7n/EC503-Project-An-Exploration-of-Recommendation-Syst
 * use load_data() function to load the book recommendation dataset
 * use create_dense() to create an artificial dataset
 * use plot_svd_iteration() to perform Experiment 1 
-* use increase_sparsity() and decrease_sparsity to perform Experiment 2 on Book Dataset
+* use increase_sparsity() and decrease_sparsity() to perform Experiment 2 on Book Dataset
 * use increase_sparsity_artificial() to perform Experiment 3 on artificial dataset
 
 ## References:
