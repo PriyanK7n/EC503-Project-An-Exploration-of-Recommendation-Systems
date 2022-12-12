@@ -27,6 +27,14 @@
 * Fill Empty/NAN(Not a Number) values with zeros.
 * Remove duplicates(ensures unique users and books)
 
+## References:
+
+1. https://github.com/iNeuron-Pvt-Ltd/Books-Recommender-System-Using-Machine-Learning
+2. https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
+3. https://en.wikipedia.org/wiki/Singular_value_decomposition
+4. https://towardsdatascience.com/recommender-system-singular-value-decomposition-svd-truncated-svd-97096338f361
+
+
 
 ## Project Structure
 
