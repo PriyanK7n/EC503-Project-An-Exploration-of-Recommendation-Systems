@@ -32,24 +32,27 @@ Programming Language Used: Python
 
 ## Project Structure
 
-├── LICENSE
-├── README.md          <- The top-level README for developers/collaborators using this project.
-│ 
-│
-├── reports            <- Folder containing the final reports/results of this project
-│   └── README.md      <- Details about final reports and analysis
-│ 
-├── src                <- Source code folder for this project
-    │
-    ├── data           <- Datasets used and collected for this project
-    │       
-    ├── references     <- Data dictionaries, manuals, and all other explanatory references used 
-    │
-    └── visualizations <- Folder to store and Visualization generated for the project
-    │
-    └── results        <- Folder to store final results and code.
-    
-    --------
+
+    ├── LICENSE
+    ├── README.md          <- The top-level README for developers/collaborators using this project. 
+    │ 
+    │   
+    │ 
+    │   
+    ├── src                <- Source code folder for this project
+        │
+        ├── data           <- Datasets used and collected for this project
+        │   
+        ├── docs           <- Folder for Task documentations, Meeting Presentations and task Workflow Documents and Diagrams.
+        │
+        ├── references     <- Data dictionaries, manuals, and all other explanatory references used 
+        │
+        ├── visualizations <- Folder to store and Visualization generated for the project
+        │
+        └── results        <- Folder to store final results and code. 
+
+
+
      
 ## Folder Overview
 
