@@ -1,5 +1,5 @@
 # EC503 Project: An Exploration of Recommendation Systems
-
+https://github.com/PriyanK7n/EC503-Project-An-Exploration-of-Recommendation-Systems
 
 ## Datasets Used in Project: 
 1. Books Recommendation Dataset
@@ -14,7 +14,7 @@
 - Pandas and Numpy to perform data-preprocessing
 
 
-## Hyperparameters: 
+## Hyper parameters: 
 - Training and Testing Split: 80%, 20%
 - num_of_components or top 'r' singular values =250
 - iterations=20
@@ -26,6 +26,13 @@
 * Ensured the Books had at least 50 ratings from users
 * Fill Empty/NAN(Not a Number) values with zeros.
 * Remove duplicates(ensures unique users and books)
+
+## Function Usages
+* use load_data() function to load the book recommendation dataset
+* use create_dense() to create an artificial dataset
+* use plot_svd_iteration() to perform Experiment 1 
+* use increase_sparsity() and decrease_sparsity to perform Experiment 2 on Book Dataset
+* use increase_sparsity_artificial() to perform Experiment 3 on artificial dataset
 
 ## References:
 
@@ -40,20 +47,15 @@
 
 
     ├── LICENSE
-    ├── README.md          <- The top-level README for developers/collaborators using this project. 
-    │ 
-    │   
-    │ 
-    │   
+    ├── README.md          <- The top-level README for developers/collaborators using this project.
+    │
+    │ 
     ├── src                <- Source code folder for this project
         │
         ├── data           <- Datasets used and collected for this project
-        │   
-        ├── references     <- Data dictionaries, manuals, and all other explanatory references used 
         │
         ├── visualizations <- Folder to store and Visualization generated for the project
-        │
-        └── results        <- Folder to store final results and code. 
+
 
 
 
