@@ -1,0 +1,11 @@
+'### dependency
+numpy
+pandas
+sklearn
+scipy
+matplotlib
+seaborn
+
+
+### local packages -
+-e . 
