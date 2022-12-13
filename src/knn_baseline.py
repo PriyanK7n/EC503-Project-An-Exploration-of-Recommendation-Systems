@@ -321,6 +321,9 @@ if __name__ == '__main__':
     # plt.show()
 
     sparse_test_metric = increase_sparsity_artificial()
+    with open('../artifacts/increase_artificial_sparsity_knn.pkl', 'wb') as f:
+    # inc_result = {'test_metric': sparse_test_metric}
+        pkl.dump(sparse_test_metric, f)
     fig, axes = plt.subplots(3, 2)
     fig.suptitle("KNN Performance : Metrics VS Sparsity \n(Artificial Test Dataset)")
     for i, metric in zip(range(5), ['mse', 'rmse', 'mae', 'cs', 'pr']):
