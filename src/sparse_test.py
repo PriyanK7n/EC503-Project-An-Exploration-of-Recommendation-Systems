@@ -232,17 +232,24 @@ def compare_mean_median():
 def plot_svd_iteration():
     metric_dict = {}
     test_metric_dict = {}
-    fig, axes = plt.subplots(3, 2)
+    # fig, axes = plt.subplots(3, 2)
     original = load_data()
-    train = original.sample(frac=0.8, random_state=200)
-    test = original.drop(train.index)
+    non_zero_index = np.where(original > 0)
+    choices = np.random.choice(len(non_zero_index[0]) - 1, size=int(0.2*len(non_zero_index[0]) - 1), replace=False)
+    train = original.copy()
+    test = original.copy()
+    test.loc[:] = np.nan
+    for j, k in zip(non_zero_index[0][choices], non_zero_index[1][choices]):
+        train.iloc[j, k] = np.nan
+        test.iloc[j, k] = original.iloc[j, k]
+
     for method in ['mean_row', 'mean_col', 'median_row', 'median_col', 'zero']:
         print(method)
         book_pivot = train.copy()
         test_pivot = test.copy()
-        non_zero_index = np.where(pd.notna(train))
-        train_evaluate_index = np.where(np.array(pd.notna(train)).flatten())
-        test_evaluate_index = np.where(np.array(pd.notna(test)).flatten())
+        non_zero_index = np.where(train > 0)
+        train_evaluate_index = np.where(np.array(train).flatten() > 0)
+        test_evaluate_index = np.where(np.array(test).flatten() > 0)
         if method == 'mean_row':
             for i in range(book_pivot.shape[0]):
                 book_pivot.iloc[i, :].fillna(book_pivot.iloc[i, :].mean(), inplace=True)
@@ -277,7 +284,7 @@ def plot_svd_iteration():
             print('Train')
             mse, rmse, mae, cs, pr = get_metrics(true[train_evaluate_index], predictions.flatten()[train_evaluate_index])
             print('Test')
-            t_mse, t_rmse, t_mae, t_cs, t_pr = get_metrics(np.array(test).flatten()[test_evaluate_index], test_predictions.flatten()[test_evaluate_index])
+            t_mse, t_rmse, t_mae, t_cs, t_pr = get_metrics(np.array(test).flatten()[test_evaluate_index], predictions.flatten()[test_evaluate_index])
             if method not in metric_dict.keys():
                 metric_dict[method] = {'mse': [mse], 'rmse': [rmse], 'mae': [mae], 'cs': [cs], 'pr': [pr]}
                 test_metric_dict[method] = {'mse': [t_mse], 'rmse': [t_rmse], 'mae': [t_mae], 'cs': [t_cs], 'pr': [t_pr]}
@@ -500,17 +507,16 @@ def plot_book_dataset():
 
 if __name__ == '__main__':
     # compare_mean_median()
-    # metric_dict, test_metric_dict = plot_svd_iteration()
-    # with open('metric_dict5.pkl', 'wb') as f:
-    #     pkl.dump(metric_dict, f)
-    # with open('test_metric_dict5.pkl', 'wb') as f:
-    #     pkl.dump(test_metric_dict, f)
-    # show_plot(metric_dict, test_metric_dict)
+    metric_dict, test_metric_dict = plot_svd_iteration()
+    with open('metric_dict5.pkl', 'wb') as f:
+        pkl.dump(metric_dict, f)
+    with open('test_metric_dict5.pkl', 'wb') as f:
+        pkl.dump(test_metric_dict, f)
+    show_plot(metric_dict, test_metric_dict)
     # with open('metric_dict5.pkl', 'rb') as f:
     #     metric_dict = pkl.load(f)
     # with open('test_metric_dict5.pkl', 'rb') as f:
     #     test_metric_dict = pkl.load(f)
-    #
     # show_plot(metric_dict, test_metric_dict)
     # show_plot(test_metric_dict, test_metric_dict)
     # test_artificial()
@@ -527,7 +533,7 @@ if __name__ == '__main__':
     # decrease_sparsity()
     # cross_validation()
 
-    plot_book_dataset()
+    # plot_book_dataset()
     # artificial dataset
     # sparse_metric, sparse_test_metric = increase_sparsity_artificial()
     # with open('sparse_artificial_metric_dict20.pkl', 'wb') as f:
